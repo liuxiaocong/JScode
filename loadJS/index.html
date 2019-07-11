@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>LoadJs</title>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+      var header = document.getElementsByTagName('head')[0];
+      var loadScript = document.createElement('script');
+      loadScript.setAttribute('type', 'text/javascript');
+      loadScript.setAttribute('src', 'load.js');
+      loadScript.setAttribute('id', 'load_js');
+      loadScript.onload = function(res, res2) {
+        console.log('on load');
+        console.log(res);
+        console.log(res2);
+      };
+      header.appendChild(loadScript);
+      var nameSpace = {};
+      $.get('load.js', function(data) {
+        (function f() {
+          eval(data);
+          nameSpace.loadjs = module;
+        })();
+
+        console.log(nameSpace);
+      });
+
+      $.get('calculator.js', function(data) {
+        (function f() {
+          eval(data);
+          nameSpace.calculator = module;
+        })();
+
+        console.log(nameSpace.calculator.add(10, 12));
+      });
+    </script>
+
+  </body>
+</html>

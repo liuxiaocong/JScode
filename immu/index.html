@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.2/immutable.js"></script>
+    <style type="text/css">
+      .input-fill-x, .input-outline-x, .textarea-outline-x {
+        /* fit-content见文章：https://www.zhangxinxu.com/wordpress/?p=5392 */
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        position: relative;
+      }
+      .input-fill-x {
+        border-bottom: 1px solid #d0d0d5;
+      }
+      .input-fill-x::after {
+        content: '';
+        position: absolute;
+        border-bottom: 2px solid #2486ff;
+        left: 0; right: 0; bottom: -1px;
+        transform: scaleX(0);
+        transition: transform .25s;
+      }
+      /* :focus-within见文章：https://www.zhangxinxu.com/wordpress/?p=7327 */
+      .input-fill-x:focus-within::after {
+        transform: scaleX(1);
+      }
+      .input-control {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        outline: none;
+      }
+      .input-fill {
+        padding: 20px 16px 6px;
+        border: 1px solid transparent;
+        background: #f5f5f5;
+      }
+      .input-outline,
+      .textarea-outline {
+        padding: 13px 16px 13px;
+        border: 1px solid #d0d0d5;
+        border-radius: 4px;
+        transition: border-color .25s;
+      }
+      .input-outline:focus,
+      .textarea-outline:focus {
+        border-color: #2486ff;
+      }
+      /* 默认placeholder颜色透明不可见 */
+      .input-control:placeholder-shown::placeholder {
+        color: transparent;
+      }
+      .input-label {
+        position: absolute;
+        font-size: 16px;
+        line-height: 1.5;
+        left: 16px; top: 14px;
+        color: #a2a9b6;
+        padding: 0 2px;
+        transform-origin: 0 0;
+        pointer-events: none;
+        transition: all .25s;
+      }
+      /* 线框样式label定位 */
+      .input-control:not(:placeholder-shown) ~ .input-label,
+      .input-control:focus ~ .input-label {
+        color: #2486ff;
+        transform: scale(0.75) translate(-2px, -32px);
+      }
+      /* 填充样式下label定位 */
+      .input-fill:not(:placeholder-shown) ~ .input-label,
+      .input-fill:focus ~ .input-label {
+        transform: scale(0.75) translateY(-14px);
+      }
+      /* 线框交互下有个白色背景 */
+      .input-outline ~ .input-label,
+      .textarea-outline  ~ .input-label {
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzUzOTk3OTY3NQ==&scene=126#wechat_redirect">公众号</a>
+    <h4>填充风格</h4>
+    <div class="input-fill-x">
+      <input class="input-control input-fill" placeholder="邮箱">
+      <label class="input-label">邮箱</label>
+    </div>
+    <h4>轮廓风格</h4>
+    <div class="input-outline-x">
+      <input class="input-control input-outline" placeholder="邮箱">
+      <label class="input-label">邮箱</label>
+    </div>
+    <h4>文本域</h4>
+    <div class="textarea-outline-x">
+      <textarea class="input-control textarea-outline" cols="25" rows="3" placeholder="评论"></textarea>
+      <label class="input-label">评论</label>
+    </div>
+    <script type="text/javascript">
+      const obj = {
+        count: 1,
+        list: [1, 2, 3, 4, 5],
+      };
+      var map1 = Immutable.fromJS(obj);
+      var map2 = map1.set('count', 4);
+
+      console.log(map1.list === map2.list); // true
+    </script>
+
+  </body>
+</html>

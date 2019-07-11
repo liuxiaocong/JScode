@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function add() {
+        let _arguments = [].slice.call(arguments);
+        let ret =function(a) {
+          [].push.apply(_arguments, [].slice.call(arguments));
+          return ret;
+        };
+        ret.toString = () => {
+          return _arguments.reduce((pre, cur) => {
+            return pre + cur;
+          });
+        };
+        return ret;
+      }
+
+      console.log(add(2)(3)(4));
+      console.log(add(2, 5) + 1);
+    </script>
+
+  </body>
+</html>

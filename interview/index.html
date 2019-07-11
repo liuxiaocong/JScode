@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+
+
+      let arr = ['peter','tom','jim','lili','eva'];
+
+      //todo
+
+      arr = arr.delete('lili');
+      console.log(arr);
+
+      //expect ['peter','tom','jim','eva']
+
+
+      var name = 'windows';
+      let obj = {
+        name: 'object',
+        say: () => {
+          console.log(this);
+          console.log(this.name);
+        },
+        say2: function() {
+          console.log(this);
+          console.log(this.name);
+        },
+      };
+
+      obj.say();
+      obj.say2();
+
+      var name = 'windows';
+
+      function test() {
+        this.name = 'object';
+        let say = function() {
+          console.log(this);
+          console.log(this.name);
+        };
+        say();
+      }
+
+      var x = new test();
+
+      var name = 'windows';
+
+      function test() {
+        this.name = 'object';
+        let say = () => {
+          console.log(this.name);
+        };
+        say();
+      }
+
+      var x = new test();
+
+
+    </script>
+  </body>
+</html>
+

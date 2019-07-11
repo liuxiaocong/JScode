@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      if ('serviceWorker' in window.navigator) {
+        navigator.serviceWorker.register('./sw.js', { scope: './' })
+        .then(function (reg) {
+          console.log('success', reg);
+          navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage("this message is from page");
+        });
+        navigator.serviceWorker.addEventListener('message', function (e) {
+          console.log(e.data); // this message is from sw.js, to page
+        });
+      }
+
+
+    </script>
+  </body>
+</html>

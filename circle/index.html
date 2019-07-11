@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+      div {
+        box-sizing: border-box;
+      }
+
+      .box {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        background-color: #ccc;
+        border-radius: 50%;
+        left: 40%;
+        top: 200px;
+
+      }
+
+      .num {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: #fff;
+        border-radius: 50%;
+        width: 180px;
+        height: 180px;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        line-height: 180px;
+        font-size: 32px;
+      }
+
+
+      .clip {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        border: 10px solid #ccc;
+        border-radius: 50%;
+        clip: rect(0, 200px, 200px, 100px);
+      }
+
+      .left {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        border: 10px solid lightblue;
+        border-radius: 50%;
+        clip: rect(0 100px 200px 0);
+        top: -10px;
+        left: -10px;
+        transform: rotate(180deg);
+      }
+
+      .right {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        border: 10px solid lightblue;
+        border-radius: 50%;
+        clip: rect(0 200px 200px 100px);
+        top: -10px;
+        left: -10px;
+      }
+
+      .width-none {
+        width: 0;
+      }
+
+      .auto {
+        clip: auto;
+      }
+
+      .Pagination-active-20 {
+        color: #00C800;
+        cursor: default;
+      }
+
+      .Pagination-page-19 {
+        cursor: pointer;
+        margin: 0 8px;
+      }
+
+      .style_paginActive__1Gh4I {
+        color: #007AFF;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="Pagination-page-19 Pagination-active-20 style_paginActive__1Gh4I">
+      ssjashakhsjahsakh
+    </div>
+    <div class="box">
+      <div class="clip">
+        <div class="left"></div>
+        <div class="right width-none"></div>
+      </div>
+      <div class="num">
+
+      </div>
+    </div>
+
+  </body>
+</html>

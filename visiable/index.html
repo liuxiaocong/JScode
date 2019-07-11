@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div id="result">
+
+    </div>
+
+    <script type="text/javascript">
+      var result = '';
+
+      document.addEventListener("visibilitychange", function() {
+        console.log( document.visibilityState );
+        // Modify behavior...
+        result = result + ':' + document.visibilityState + '<br/>';
+        document.getElementById('result').innerHTML = result;
+      });
+    </script>
+  </body>
+</html>

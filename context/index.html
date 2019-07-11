@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+
+
+      //      const p1 = new Promise(function (resolve, reject) {
+      //        //setTimeout(() => resolve("success"), 3000)
+      //        setTimeout(() => reject(new Error('fail')), 3000)
+      //      })
+      //
+      //      const p2 = new Promise(function (resolve, reject) {
+      //        setTimeout(() => resolve(p1), 1000)
+      //      })
+      //
+      //      p2
+      //      .then(result => console.log(result))
+      //      .then(null,error => console.log(error))
+
+//      const p1 = new Promise((resolve, reject) => {
+//        resolve('hello');
+//      }).then(result => result).catch(e => e);
+//
+//      const p2 = new Promise((resolve, reject) => {
+//        throw new Error('报错了');
+//      }).then(result => result)
+//      .catch((e) => {
+//        console.log(e);
+//        return e;
+//      });
+//
+//      Promise.all([p1, p2]).then(result => {
+//          console.log('success');
+//          console.log(result[0]);
+//          console.log(result[1]);
+//        },
+//      ).catch(e => console.log(e));
+
+      function* helloWorldGenerator() {
+        yield 'hello';
+        yield 'world';
+        return 'ending';
+      }
+
+      var hw = helloWorldGenerator();
+      console.log(hw.next());
+      console.log(hw.toString());
+
+      function a(location = {}) {
+        console.log(location.query);
+      }
+      a(null);
+    </script>
+  </body>
+</html>

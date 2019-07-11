@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+      function a(name) {
+        this.name = name;
+        a.prototype.child.push(name)
+      };
+      a.prototype.child = [];
+      a.prototype.say = function() {
+        console.log(this.name);
+      };
+      var me = new a("xiaocong");
+      var me2 = new a("liouxiaocong");
+      me.say();
+      console.log(me.constructor.prototype.child);
+      console.log(me.child);
+      console.log(me.__proto__);
+      console.log(a.prototype);
+
+
+      var Animal = function(name){
+        this.name = name;
+      };
+      Animal.prototype.jump = function(){
+        console.log('jumped:' + this.name);
+      };
+      var Human = function(name){
+        this.name = name;
+      };
+      // 这一步会使得
+      // Human.prototype.constructor = Animal;
+      // 所以需要重新手动重定向
+      Human.prototype = Animal.prototype;
+      // 如果不更改
+      // 通过`Human`构造器构造出来的对象的构造器会变成`Animal`而不是`Human`
+      Human.prototype.constructor = Human;
+
+      var man = new Human('HaoyCn');
+      man.jump();
+    </script>
+  </body>
+</html>

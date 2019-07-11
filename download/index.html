@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html>
+      <head>
+      </head>
+      <body>
+        <button onclick="tryit();">PDF</button>
+        <script>
+          function tryit() {
+            downloadFile('https://hashnest.com/client/api/v2/running_records/export?start=2019-06-08&begin=2019-06-08&end=2019-07-08', function(data) {
+              const blob = new Blob([data], { type: 'text/csv' });
+              var url = URL.createObjectURL(blob);
+
+              const link = document.createElement('a');
+              link.href = url;
+              link.download = '111.csv';
+              link.click();
+            });
+          }
+          function downloadFile(url, success) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.setRequestHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjI1ODU3NjcsImRhdGEiOnsicHVycG9zZSI6ImFjY2VzcyIsInVzZXJfaWQiOjIwMDc5NDYsImVtYWlsIjoiY2lzc3lAaGFzaG5lc3QuY29tIiwidXNlcl9uYW1lIjoiY2lzc3lfaGFzaG5lc3QuY29tIiwiYXZhdGFyIjoiaHR0cHM6Ly9hc3NldHMuaGFzaG5lc3QuY29tL3VwbG9hZHMvZGVmYXVsdC1wcm9maWxlLnBuZyIsInBob25lX251bWJlciI6IiIsImxvY2FsZSI6ImVuIiwic3RhdHVzIjoxfX0.P4odHthQnVDgrynQpNo9rRkB7Q50aZbNw-Pr10JHpyw");
+            xhr.responseType = "text/csv";
+            xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4) {
+                console.log(xhr.response);
+                if (success) success(xhr.response);
+              }
+            };
+            xhr.send(null)
+          }
+
+        </script>
+      </body>
+    </html>
+  </body>
+</html>

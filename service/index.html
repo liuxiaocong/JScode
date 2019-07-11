@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <img src="a.jpg" />
+    <script type="text/javascript">
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+          console.log('service worker 注册成功');
+        }).catch(function (err) {
+          console.log('servcie worker 注册失败')
+        });
+      }
+    </script>
+  </body>
+</html>

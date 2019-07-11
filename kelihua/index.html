@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var newArr = [1, 2, 3, 4].map((item, i, arr) => {
+        // console.log(item, i, arr, this);  // 可运行试试看
+        return item + 1;  // 每一项加1
+      });
+
+      // console.log(newArr); // [2, 3, 4, 5]
+      var arr = [1, 2, 3];
+      arr.reduce(function(pre, cur, index, arr) {
+        //debugger;
+        return pre + cur;
+      }, 10);
+
+      function a() {
+        console.log('>>>>>>>>>>>>>>>>>');
+        console.log(arguments);
+        console.log(arguments.length);
+        console.log([].slice.call(arguments));
+      }
+
+      a('a', 'b');
+      a({ 'name': 'xiaocong' });
+      a();
+
+      const getFormat = (str, ...props) => {
+        if (!str || !props) {
+          return str;
+        }
+        let propsIndex = 0;
+        while (true) {
+          if (str.indexOf('%d') < 0 && str.indexOf('%s') < 0) {
+            return str;
+          }
+          if (propsIndex > props.length - 1) {
+            return str;
+          }
+          const indexD = str.indexOf('%d');
+          const indexS = str.indexOf('%s');
+          if (indexD === -1) {
+            str = str.replace('%s', props[propsIndex]);
+          } else if (indexS === -1) {
+            str = str.replace('%d', props[propsIndex]);
+          } else if (indexD < indexS) {
+            str = str.replace('%d', props[propsIndex]);
+          } else {
+            str = str.replace('%s', props[propsIndex]);
+          }
+          propsIndex++;
+        }
+      };
+      var c = getFormat('1233%s, %d', 'c1', 'd2');
+      console.log(c);
+    </script>
+  </body>
+</html>

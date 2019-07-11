@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+
+    <script type="text/javascript">
+      var arr = ['liu', 'xiao', 'cong'];
+      var arr2 = arr.concat('wo'); // 不改变原来数组
+      arr2 = arr2.concat(['wo2', 'wo3']);
+      arr2 = arr2.concat('wo4', 'wo5');
+      console.log(arr2.join('-'));
+      console.log(arr2);
+      console.log(arr);
+
+      console.log(arr2.pop());
+      console.log(arr2);
+
+      console.log(arr2.push('push', 'xx'));
+      console.log(arr2);
+
+      console.log(arr2.shift());
+      console.log(arr2);
+
+      console.log(arr.unshift('new'));
+      console.log(arr2);
+
+      var arr3 = arr2.slice(); //不传参数就是复制数组；
+      var arr4 = arr2.slice(1, 3);
+
+      console.log(arr3);
+      console.log(arr4);
+
+      var nums = [10, 5, 3, 1, 4, 5, 61, 2];
+      console.log(nums.sort()); //数组改变了
+      console.log(nums);
+
+      var nums2 = ['10', '5', '3', '1', '4', '5', '61', '2'];
+      console.log(nums2.sort());
+      console.log(nums2.sort((a, b) => {
+        return a - b;
+      }));
+
+      //      splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目。
+      //      注释：该方法会改变原始数组。
+
+      console.log('splice >>>>>>>>>>>>>>>>>');
+      console.log(arr3);
+      console.log(arr3.splice(0, 4, 'xx'));
+      console.log(arr3);
+
+      console.log(arr3.toString());
+      Array.prototype.toString = function() {
+        return 'Array';
+      };
+      console.log(arr3.toString());
+
+      var ages = [32, 33, 16, 40];
+      console.log(ages.filter(function(age) {
+        return age > 30;
+      }));
+      console.log(ages); // filter不改变数组
+
+      console.log(ages.map(function(item) {
+        return item + 'aaa';
+      }));
+
+      console.log(ages); // map不改变数组
+
+      var a = {};
+      var b = [];
+      console.log(Array.isArray(a));
+      console.log(Array.isArray(b));
+
+      let aaa = [2, 3, 4, 1, 2, 3, 4, 5, 6, 7, 8];
+      quickSort(aaa);
+      console.log(aaa);
+
+      function quickSort(arr) {
+        if (!arr) {
+          return;
+        }
+        sort(arr, 0, arr.length - 1);
+      }
+
+      function sort(arr, left, right) {
+        if (left >= right) {
+          return;
+        }
+        let key = arr[left];
+        let start = left;
+        let end = right;
+        while (start !== end) {
+          while (end > start && arr[end] >= key) {
+            end--;
+          }
+          while (end > start && arr[start] <= key) {
+            start++;
+          }
+          if (start !== end) {
+            let temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+          }
+        }
+        arr[left] = arr[start];
+        arr[start] = key;
+        sort(arr, left, start - 1);
+        sort(arr, start + 1, right);
+      }
+    </script>
+  </body>
+</html>

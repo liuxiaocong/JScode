@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+  </head>
+  <body style="border:5px solid #333;">
+
+    <h1>this is iframePage</h1>
+    <script type="text/javascript">
+      function receiveMessageFromIndex ( event ) {
+        console.log( 'receiveMessageFromIndex', event );
+
+        parent.postMessage( {msg: 'MessageFromIframePage'}, '*');
+      }
+
+      //监听message事件
+      window.addEventListener("message", receiveMessageFromIndex, false);
+
+    </script>
+  </body>
+</html>

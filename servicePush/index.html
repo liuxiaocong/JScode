@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Service push</title>
+  </head>
+  <body>
+    Service push
+
+    <script type="text/javascript">
+      navigator.serviceWorker.register('sw-4.js').then(function(reg) {
+        console.log('Yes, it did register service worker.');
+        console.log('reg >>>>>>>>>>>>>>>>>>>>>>');
+        console.log(reg);
+        if (window.PushManager) {
+          reg.pushManager.getSubscription().then(subscription => {
+            // 如果用户没有订阅
+            console.log('subscription >>>>>>>>>>>>>>>>>>>>>>');
+            console.log(subscription);
+            if (!subscription) {
+              subscribeUser(reg);
+            } else {
+              console.log('You have subscribed our notification');
+            }
+          });
+        }
+      }).catch(function(err) {
+        console.log('No it didn\'t. This happened: ', err);
+      });
+
+      function urlB64ToUint8Array(base64String) {
+        const padding = '='.repeat((4 - base64String.length % 4) % 4);
+        const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
+
+        const rawData = window.atob(base64);
+        const outputArray = new Uint8Array(rawData.length);
+
+        for (let i = 0; i < rawData.length; ++i) {
+          outputArray[i] = rawData.charCodeAt(i);
+        }
+        return outputArray;
+      }
+
+      function subscribeUser(swRegistration) {
+        const applicationServerPublicKey = 'BKWA-FE7PVg7LMAs38Z-NY8_YBC4JrdDlIxOIWLNbxecA387n5CO8aoqrtNSYn73prfh0zIzENUVBkpKowUlri8';
+        const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
+        swRegistration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: applicationServerKey,
+        })
+        // 用户同意
+        .then(function(subscription) {
+          console.log('User is subscribed:', JSON.stringify(subscription));
+          //jQuery.post("/add-subscription.php", {subscription: JSON.stringify(subscription)}, function(result) {
+          //  console.log(result);
+          //});
+        })
+        // 用户不同意或者生成失败
+        .catch(function(err) {
+          console.log('Failed to subscribe the user: ', err);
+        });
+      }
+    </script>
+  </body>
+</html>

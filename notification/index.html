@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Notification</title>
+  </head>
+  <body>
+    Notification
+    <button>Notify me!</button>
+    <script type="text/javascript">
+      Notification.requestPermission().then(function(result) {
+        console.log(result);
+      });
+
+      var button = document.getElementsByTagName('button')[0];
+
+      button.addEventListener('click', function () {
+        // If the user agreed to get notified
+        // Let's try to send ten notifications
+        if (window.Notification && Notification.permission === "granted") {
+          console.log("granted")
+          var i = 0;
+          // Using an interval cause some browsers (including Firefox) are blocking notifications if there are too much in a certain time.
+          var interval = window.setTimeout(function () {
+            // Thanks to the tag, we should only see the "Hi! 9" notification
+            var n = new Notification("Time:" + (new Date()).toLocaleDateString());
+            //if (i++ == 9) {
+            //  window.clearInterval(interval);
+            //}
+          }, 5000);
+        }
+
+        // If the user hasn't told if he wants to be notified or not
+        // Note: because of Chrome, we are not sure the permission property
+        // is set, therefore it's unsafe to check for the "default" value.
+        else if (window.Notification && Notification.permission !== "denied") {
+          console.log("requestPermission");
+          Notification.requestPermission(function (status) {
+            // If the user said okay
+            if (status === "granted") {
+              var i = 0;
+              // Using an interval cause some browsers (including Firefox) are blocking notifications if there are too much in a certain time.
+              var interval = window.setInterval(function () {
+                // Thanks to the tag, we should only see the "Hi! 9" notification
+                var n = new Notification("Hi! " + i, {tag: 'soManyNotification'});
+                if (i++ == 9) {
+                  window.clearInterval(interval);
+                }
+              }, 200);
+            }
+
+            // Otherwise, we can fallback to a regular modal alert
+            else {
+              alert("Hi!");
+            }
+          });
+        }
+
+        // If the user refuses to get notified
+        else {
+          // We can fallback to a regular modal alert
+          alert("Hi!");
+        }
+      });
+    </script>
+
+  </body>
+</html>

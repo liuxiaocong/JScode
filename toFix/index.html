@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function number(data,n){
+        var numbers = '';
+        // 保留几位小数后面添加几个0
+        for (var i = 0; i < n; i++) {
+          numbers += '0';
+        }
+        var s = 1 + numbers;
+        // 如果是整数需要添加后面的0
+        var spot = "." + numbers;
+        // Math.round四舍五入
+        //  parseFloat() 函数可解析一个字符串，并返回一个浮点数。
+        var value = Math.round(parseFloat(data) * s) / s;
+        // 从小数点后面进行分割
+        var d = value.toString().split(".");
+        if (d.length == 1) {
+          value = value.toString() + spot;
+          return value;
+        }
+        if (d.length > 1) {
+          if (d[1].length < 2) {
+            value = value.toString() + "0";
+          }
+          return value;
+        }
+      }
+      number(12.15478,3) // 参数（小数，保留几位小数）
+    </script>
+  </body>
+</html>

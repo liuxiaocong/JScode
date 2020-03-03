@@ -16,7 +16,7 @@
           reg.pushManager.getSubscription().then(subscription => {
             // 如果用户没有订阅
             console.log('subscription >>>>>>>>>>>>>>>>>>>>>>');
-            console.log(subscription);
+            console.log(JSON.stringify(subscription));
             if (!subscription) {
               subscribeUser(reg);
             } else {
@@ -42,8 +42,9 @@
       }
 
       function subscribeUser(swRegistration) {
-        const applicationServerPublicKey = 'BKWA-FE7PVg7LMAs38Z-NY8_YBC4JrdDlIxOIWLNbxecA387n5CO8aoqrtNSYn73prfh0zIzENUVBkpKowUlri8';
+        const applicationServerPublicKey = 'BBik0xoq5Y_r9FoX_cN2O9EBgpP8KzHoDwv_PFZF0R476_3i0K0glqMoVwxQWpr2ak9jvm8ibWN6_09lTgQD-_s';
         const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
+        console.log(applicationServerKey)
         swRegistration.pushManager.subscribe({
           userVisibleOnly: true,
           applicationServerKey: applicationServerKey,

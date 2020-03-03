@@ -1,0 +1,194 @@
+1|#||4|10820|updatePanel|ctl00_ctl00_MainContent_eLeaveContent_Updatepanel2|
+<div class="col-lg-7">
+  <fieldset>
+    <label class="col-sm-4">Select leave type</label>
+    <select name="ctl00$ctl00$MainContent$eLeaveContent$drpLeaveType" onchange="DisableSubmit();setTimeout(&#39;__doPostBack(\&#39;ctl00$ctl00$MainContent$eLeaveContent$drpLeaveType\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_ctl00_MainContent_eLeaveContent_drpLeaveType" class="form-control input-sm pull-right">
+      <option selected="selected" value="1">Annual</option>
+      <option value="7">Compassionate</option>
+      <option value="5">Hospital</option>
+      <option value="10">In Camp Training</option>
+      <option value="3">Maternity</option>
+      <option value="6">No Pay</option>
+      <option value="6156">off-in-lieu</option>
+      <option value="4">Sick</option>
+
+    </select>
+    <input type="hidden" name="ctl00$ctl00$MainContent$eLeaveContent$hdRemarksMandatory" id="ctl00_ctl00_MainContent_eLeaveContent_hdRemarksMandatory" value="0"/>
+    <input type="hidden" name="ctl00$ctl00$MainContent$eLeaveContent$hdAttachMandatory" id="ctl00_ctl00_MainContent_eLeaveContent_hdAttachMandatory" value="0"/>
+
+  </fieldset>
+
+  <fieldset>
+    <label class="col-sm-4">Select dates</label>
+    <div class="time-toggles clearfix pull-right">
+      <div class="pull-left">
+        <input name="ctl00$ctl00$MainContent$eLeaveContent$txtDateFrom" type="text" id="ctl00_ctl00_MainContent_eLeaveContent_txtDateFrom" class="form-control " onfocus="this.blur();" value="08/01/2020"/>
+
+        <label class="switch switch-green" style="min-width: inherit; vertical-align: middle">
+          <input name="ctl00$ctl00$MainContent$eLeaveContent$dateFromCheckBox" type="checkbox" id="ctl00_ctl00_MainContent_eLeaveContent_dateFromCheckBox" class="switch-input" checked="checked"/>
+          <span class="switch-label" data-on="AM" data-off="PM"></span>
+          <span class="switch-handle"></span>
+        </label>
+      </div>
+      <div class="pull-right">
+        <input name="ctl00$ctl00$MainContent$eLeaveContent$txtDateTo" type="text" id="ctl00_ctl00_MainContent_eLeaveContent_txtDateTo" class="form-control" onfocus="this.blur();" value="09/01/2020"/>
+        <label class="switch switch-green" style="min-width: inherit; vertical-align: middle">
+          <input name="ctl00$ctl00$MainContent$eLeaveContent$dateToCheckBox" type="checkbox" id="ctl00_ctl00_MainContent_eLeaveContent_dateToCheckBox" class="switch-input"/>
+          <span class="switch-label" data-on="AM" data-off="PM"></span>
+          <span class="switch-handle"></span>
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <span id="lblTotalLeaveDays" class="control-label col-sm-4" style="display:inline-block;font-weight:bold;width:220px;">Total days of leave</span>
+    <div class="time-toggles clearfix pull-right">
+      <div id="SystemCalculatedDays" class="pull-left ex1"><p id="ctl00_ctl00_MainContent_eLeaveContent_txtTotalDays" class="ex1 allownumericwithdecimal" width="100%">2</p></div>
+      <div id="ManualEditDays" class="pull-left">
+        <input name="ctl00$ctl00$MainContent$eLeaveContent$txtEditDays" type="text" value="2" id="ctl00_ctl00_MainContent_eLeaveContent_txtEditDays" class="form-control input-sm allownumericwithdecimal" style="width:100%;"/></div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <label class="col-sm-4">Notify (separated by ;)</label>
+    <input name="ctl00$ctl00$MainContent$eLeaveContent$txtNotify" type="text" id="ctl00_ctl00_MainContent_eLeaveContent_txtNotify" placeholder="Enter email addresses here..." class="form-control input-sm pull-right"/>
+
+  </fieldset>
+
+
+  <div id="ctl00_ctl00_MainContent_eLeaveContent_panelIllnessReason">
+
+    <fieldset>
+      <label class="col-sm-4">Remarks</label>
+      <textarea name="ctl00$ctl00$MainContent$eLeaveContent$txtRemarks" id="ctl00_ctl00_MainContent_eLeaveContent_txtRemarks" type="text" placeholder="Remarks here..." class="form-control input-sm pull-right" maxlength="1000"></textarea>
+    </fieldset>
+
+  </div>
+
+  <br class="clearfix">
+  <div class="col-md-12 text-center">
+                                                    
+
+                                                    
+
+                                                    <span id="ctl00_ctl00_MainContent_eLeaveContent_tooltipSpan" class="tool-tip">
+                                                        <input type="submit" name="ctl00$ctl00$MainContent$eLeaveContent$btnSubmit" value="Submit" onclick="return Submit_OnClientClick();" id="ctl00_ctl00_MainContent_eLeaveContent_btnSubmit" class="btn btn-primary" style="width:100px;"/>
+                                                    </span>
+  </div>
+  <br class="clearfix">
+  <br class="clearfix">
+  <hr>
+
+
+  <!-- modal notification -->
+  <div id="ctl00_ctl00_MainContent_eLeaveContent_LeaveModal" class="modal fade hmodal-success" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="color-line ui-sortable"></div>
+        <div class="modal-header text-center">
+          <h4 class="modal-title text-success"><i class="pe-7s-like2"></i>&nbsp; Great!</h4>
+        </div>
+        <div class="modal-body">
+          <center><p>Your leave application has been submitted.</p></center>
+        </div>
+        <div class="modal-footer">
+          <center><button type="button" class="btn btn-default" data-dismiss="modal" onclick="initialCalendar('1');">Close</button></center>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- officers -->
+
+
+  <div class="officers text-center">
+
+    <div id="ctl00_ctl00_MainContent_eLeaveContent_fsAo" class=" officers2">
+      Your Approving Officer is&nbsp;
+
+      <span id="ctl00_ctl00_MainContent_eLeaveContent_lblAOName" style="color: #266dab; font-weight: bold;">Zhang Hongxing</span>
+      <input type="hidden" name="ctl00$ctl00$MainContent$eLeaveContent$hfROGUID" id="ctl00_ctl00_MainContent_eLeaveContent_hfROGUID"/>
+      <input type="hidden" name="ctl00$ctl00$MainContent$eLeaveContent$hfAOGUID" id="ctl00_ctl00_MainContent_eLeaveContent_hfAOGUID" value="7126DDEB469E4188922704790018487F"/>
+      <a href="#" id="xedAO" data-type="select" data-pk="1" data-title="Select AO"></a>
+      <a id="xedAOEmpty" style="display: none; cursor: default;"><b>Empty</b></a>
+
+      .&nbsp;
+    </div>
+  </div>
+</div>
+|3946|updatePanel|ctl00_ctl00_MainContent_eLeaveContent_Updatepanel3|
+<div class="hpanel col-lg-5 leave-widget">
+  <div class="panel-body">
+    <div class="eleave-chartbox">
+      <canvas class="hidden-sm hidden-xs hidden-sm" id="doughnutChart" height="140"></canvas>
+    </div>
+    <h4>
+      Annual</h4>
+    <div class="table-responsive">
+      <table cellpadding="1" cellspacing="1" class="table table-condensed">
+        <tbody>
+
+        <tr>
+          <td>
+            <span id="ctl00_ctl00_MainContent_eLeaveContent_lblBalanceLabel">Balance As At 01/01/2020</span></td>
+          <td><span id="ctl00_ctl00_MainContent_eLeaveContent_spanBalanceAsAt">0</span></td>
+        </tr>
+
+        <tr>
+          <td>Adjustment</td>
+          <td>
+            <div class="tooltip-demo" style="display: inline-block"><a href="#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="View adjustment details"><span id="ctl00_ctl00_MainContent_eLeaveContent_spanAdjustment" class="adjustment_link">0</span></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span id="ctl00_ctl00_MainContent_eLeaveContent_lblTakenLabel">Taken Since 01/01/2020</span></td>
+          <td><span id="ctl00_ctl00_MainContent_eLeaveContent_spanTaken">0</span></td>
+        </tr>
+        <tr>
+          <td class="font-bold">Leave Balance</td>
+          <td><span id="ctl00_ctl00_MainContent_eLeaveContent_spanBalance" class="font-bold">0</span></td>
+
+        </tr>
+        <tr>
+          <td>Pending</td>
+          <td><span id="ctl00_ctl00_MainContent_eLeaveContent_spanPending">0</span></td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+|1748|updatePanel|ctl00_ctl00_MainContent_eLeaveContent_updateCalendarPanel|
+<div class="row">
+  <div class="col-lg-3 col-sm-3">
+    <div class="btn-group">
+      <a href="#" id="ctl00_ctl00_MainContent_eLeaveContent_rdnPersonal" class="calendarLink btn btn-default btn-sm active" data-type="1">Personal</a>
+
+
+    </div>
+  </div>
+  <div class="col-lg-3 col-sm-3">
+
+  </div>
+  <div class="col-lg-3 col-sm-3">
+
+  </div>
+  <div class="col-lg-3 col-sm-3">
+
+  </div>
+</div>
+<hr>
+<div id="calendar"></div>
+<ul id="calendarLegend" class="cal-legends">
+  <li>
+    <div class='swatch' style='background-color:#f3ffb7'></div>
+    Annual
+  </li>
+  <li>
+    <div class='swatch' style='background-color:#bad4ff'></div>
+    Public Holiday
+  </li>
+</ul>
+|0|hiddenField|__EVENTTARGET||0|hiddenField|__EVENTARGUMENT||0|hiddenField|__LASTFOCUS||5740|hiddenField|__VIEWSTATE|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|8|hiddenField|__VIEWSTATEGENERATOR|A36F0B8E|0|hiddenField|__VIEWSTATEENCRYPTED||274|asyncPostBackControlIDs||ctl00$ctl00$MainContent$eLeaveContent$drpLeaveType,,ctl00$ctl00$MainContent$eLeaveContent$btnSubmit,,ctl00$ctl00$MainContent$eLeaveContent$drpLeaveHistoryYear,,ctl00$ctl00$MainContent$eLeaveContent$btnConfirmAction,,ctl00$ctl00$MainContent$eLeaveContent$drpLeaveSummaryYear,|0|postBackControlIDs|||435|updatePanelIDs||tctl00$ctl00$MainContent$eLeaveContent$Updatepanel2,,tctl00$ctl00$MainContent$eLeaveContent$panelIllnessReason,,tctl00$ctl00$MainContent$eLeaveContent$Updatepanel3,,tctl00$ctl00$MainContent$eLeaveContent$upnlDataGrid,,tctl00$ctl00$MainContent$eLeaveContent$Updatepanel4,,tctl00$ctl00$MainContent$eLeaveContent$updateCalendarPanel,,tctl00$ctl00$MainContent$eLeaveContent$upPanelGrid,,tctl00$ctl00$MainContent$eLeaveContent$UpdatePanel1,|56|childUpdatePanelIDs||ctl00$ctl00$MainContent$eLeaveContent$panelIllnessReason|162|panelsToRefreshIDs||ctl00$ctl00$MainContent$eLeaveContent$Updatepanel2,,ctl00$ctl00$MainContent$eLeaveContent$Updatepanel3,,ctl00$ctl00$MainContent$eLeaveContent$updateCalendarPanel,|2|asyncPostBackTimeout||90|17|formAction||./ApplyLeave.aspx|11|pageTitle||Apply Leave|227|scriptStartupBlock|ScriptContentNoTags|$('ul.nav > li').removeClass('active');$('ul.nav > li > ul').removeClass('in');$('ul.nav > li > ul').removeAttr('style');var elem = $("[data-menuid='12005']"); $(elem).parent().addClass('active'); $(elem).next().addClass('in');|237|scriptStartupBlock|ScriptContentNoTags|var doughnutData = [{"value":0.0,"color":"#FDC32E","highlight":"#FFA500","label":"Pending"},{"value":0.0,"color":"#ADD8E6","highlight":"#9AE6F3","label":"Taken"},{"value":0.0,"color":"#F5A9A9","highlight":"#FF0000  ","label":"Balance"}];|

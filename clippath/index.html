@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+      .in {
+        animation: clipCircleIn .6s;
+      }
+
+      @keyframes clipCircleIn {
+        0% {
+          clip-path: circle(0);
+        }
+        100% {
+          clip-path: circle(200px);
+        }
+      }
+
+      .img {
+        clip-path: circle(200px);
+        animation: clipCircleIn .6s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <img src="https://image.zhangxinxu.com/image/study/p/s500/ps3.jpg" class="img"/>
+
+    </div>
+  </body>
+</html>

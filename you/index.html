@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://ucstatic.iyouchain.com/sdk/youchainDapp/dapp.min.js"></script>
+  </head>
+  <body>
+
+
+    <script type="text/javascript">
+      //let dapp = new YOUChainDapp.Navigation() // 实例化导航对象
+      //
+      //dapp.goBack() // 开始返回操作
+
+      let dapp = new window.YOUChainDapp.Pay(window, (type, data)=>{
+        if (type === YOUChainDapp.PAYMENT_TYPE.success) {
+          success_callback()
+        } else if (type === YOUChainDapp.PAYMENT_TYPE.error) {
+          error_callback()
+        } else if (type === YOUChainDapp.PAYMENT_TYPE.cancel) {
+          cancel_callback()
+        }
+      });
+      dapp.init({}) // 唤起支付窗口
+    </script>
+  </body>
+</html>

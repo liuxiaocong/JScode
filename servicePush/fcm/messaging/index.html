@@ -67,7 +67,17 @@ limitations under the License.
           <div id="messages"></div>
         </div>
       </div>
-
+      <pre>
+curl -X POST -H "Authorization: key=AIzaSyB6fx3ImXMzu2MDIGdecMSvvczyDmFgT3I" -H "Content-Type: application/json" -d '{
+"notification": {
+"title": "Portugal vs. Denmark",
+"body": "5 to 1",
+"icon": "https://www.hashnest.com/logo.png",
+"click_action": "/message"
+},
+"to": "fn2mDXNvezg:APA91bFzezVEvjJS2dRbAoeUqRQoXc0VHi0G2RiaNoDUHSe7a8nRbTuHosUVwO7pCqv44fJYslXVDf6sZEI2a0SKyBdfSINZGBwrWRKM8g_cCNVvcpRINa9UuhmH5HqidzKfiLzYOszq"
+}' "https://fcm.googleapis.com/fcm/send"
+</pre>
     </div>
   </main>
 </div>
@@ -101,7 +111,7 @@ limitations under the License.
   // [END get_messaging_object]
   // [START set_public_vapid_key]
   // Add the public key generated from the console here.
-  messaging.usePublicVapidKey('BKWA-FE7PVg7LMAs38Z-NY8_YBC4JrdDlIxOIWLNbxecA387n5CO8aoqrtNSYn73prfh0zIzENUVBkpKowUlri8');
+  messaging.usePublicVapidKey('BF7A-anj3hoSxm1kzWZTh2nVkA1Sz-tHf61A934SV09eUx93aY6MpLMnVgqWfcrvUyIQBAvGQZCajC325WPJWOU');
   // [END set_public_vapid_key]
 
   // IDs of divs that display Instance ID token UI or request permission UI.
@@ -149,6 +159,7 @@ limitations under the License.
     // [START get_token]
     // Get Instance ID token. Initially this makes a network call, once retrieved
     // subsequent calls to getToken will return from cache.
+    console.log("messaging.getToken()...")
     messaging.getToken().then((currentToken) => {
       if (currentToken) {
         sendTokenToServer(currentToken);
@@ -281,16 +292,7 @@ limitations under the License.
 
   resetUI();
 </script>
+
 </body>
 </html>
 
-
-<!--curl -X POST -H "Authorization: key=AIzaSyB6fx3ImXMzu2MDIGdecMSvvczyDmFgT3I" -H "Content-Type: application/json" -d '{-->
-<!--"notification": {-->
-<!--"title": "Portugal vs. Denmark",-->
-<!--"body": "5 to 1",-->
-<!--"icon": "firebase-logo.png",-->
-<!--"click_action": "http://localhost:8081"-->
-<!--},-->
-<!--"to": "eX0T8Zve_w0:APA91bFY8nR_xxidHJziXD2AxFDxjoGSzeHyN8uSL-jCyWk3Zb7hwGrcLKgvbnIGiXdZMA75DNM3K4vB0EG1swGP2V6WCxQsz-a0baQt0AgrnjMuU0CCWCj99q7uf9e5UN7DSKaMf7PG"-->
-<!--}' "https://fcm.googleapis.com/fcm/send"-->

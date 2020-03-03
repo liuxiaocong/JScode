@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: sans-serif;
+      }
+
+      h2 {
+        position: fixed;
+        text-align: center;
+        font-size: 1.5rem;
+        font-family: monospace;
+        top: 1em;
+      }
+
+      em {
+        font-weight: bold;
+      }
+
+
+      .container {
+        max-height: 100vh;
+        overflow-y: scroll;
+        border: 1px solid gray;
+        scroll-snap-type: y mandatory;
+        width: 100%;
+      }
+
+      li {
+        border-bottom: 1px solid white;
+        padding: 3rem;
+        font-size: 1.4rem;
+        background: lightgray;
+        text-align: center;
+        scroll-snap-align: start;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div>
+        <ul class="container">
+          <li>Lorem, ipsum dolor.</li>
+          <li>Doloremque, maxime id.</li>
+          <li>Mollitia, qui beatae?</li>
+          <li>Sit, fuga repellendus!</li>
+          <li>Reiciendis, commodi asperiores?</li>
+          <li>Dicta, deleniti tempore?</li>
+          <li>Recusandae, rerum numquam.</li>
+          <li>Cumque, quos eveniet?</li>
+          <li>Accusamus, libero in.</li>
+          <li>Reprehenderit, minus debitis.</li>
+          <li>Minima, dolores nobis?</li>
+          <li>Iure, consequatur illum!</li>
+          <li>Atque, nostrum libero!</li>
+          <li>Minima, porro veritatis?</li>
+          <li>Explicabo, non itaque.</li>
+          <li>Quidem, mollitia porro.</li>
+          <li>Maiores, recusandae voluptatem.</li>
+          <li>Inventore, autem cupiditate?</li>
+          <li>Illum, reprehenderit quos.</li>
+          <li>Sapiente, obcaecati facilis.</li>
+        </ul>
+      </div>
+    </div>
+    <script type="text/javascript">
+      //const gra = function(min, max) {
+      //  return Math.random() * (max - min) + min;
+      //};
+      //const init = function() {
+      //  let items = document.querySelectorAll('li');
+      //  for (let i = 0; i < items.length; i++) {
+      //    items[i].style.minHeight = gra(120, 205) + 'vh';
+      //    items[i].style.background = randomColor({luminosity: 'light'});
+      //  }
+      //
+      //  cssScrollSnapPolyfill();
+      //};
+      //init();
+
+    </script>
+  </body>
+</html>

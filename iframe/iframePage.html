@@ -12,6 +12,9 @@
 
     <h1>this is iframePage</h1>
     <script type="text/javascript">
+      window.alertNode = function(message) {
+        console.log(message);
+      }
       function receiveMessageFromIndex ( event ) {
         console.log( 'receiveMessageFromIndex', event );
 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>line camp</title>
+  </head>
+  <body>
+    <head>
+      <meta charset="UTF-8"/>
+      <title>测试</title>
+      <style type="text/css">
+        * {
+          padding: 0px;
+          margin: 0px;
+        }
+
+        .box {
+          width: 220px;
+          background: #eee;
+          position: relative;
+          overflow: hidden;
+          min-height: 80px;
+          padding: 10px 10px 10px 100px;
+        }
+
+        .box img {
+          width: 80px;
+          height: 80px;
+          position: absolute;
+          left: 10px;
+          top: 10px;
+        }
+
+        .box h3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          font-size: 14px;
+          line-height: 20px;
+          text-overflow: ellipsis;
+        }
+
+        .box span {
+          font-size: 14px;
+          color: #f00;
+          line-height: 30px;
+        }
+
+        .aaa {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          width: 100px;
+          display: block;
+          line-height: 20px;
+          height: 40px;
+          overflow: hidden
+        }
+      </style>
+    </head>
+    <body>
+      <div class="box">
+        <img src="http://120.25.174.99:668/attachment/mall/product/201605031628.jpg" alt=""/>
+        <h3>大号高款陶瓷花盆带托盘桌面花盆中国风梅兰竹菊花盆陶瓷竹菊花盆陶瓷竹菊花盆陶瓷</h3>
+        <span>$230</span>
+      </div>
+
+      <div class="aaa">大号高款陶瓷花盆带托盘桌面花盆中国风梅兰竹菊花盆陶瓷竹菊花盆陶瓷竹菊花盆陶瓷</div>
+    </body>
+  </body>
+</html>

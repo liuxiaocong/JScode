@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <iframe src="https://hashnest.com/#id=I0_1569835001613&_gfid=I0_1569835001613&parent=http%3A%2F%2Flocalhost%3A3000&pfname=&rpctoken=39591644" ></iframe>
+    <textarea id="output"></textarea>
+    <button id="paste">Paste</button>
+    <script type="text/javascript">
+      function paste() {
+        var pasteText = document.querySelector("#output");
+        pasteText.focus();
+        document.execCommand("paste");
+        console.log(pasteText.textContent);
+
+        navigator.clipboard.readText().then(clipText =>
+          pasteText.innerText = clipText, (err)=>{
+          console.log(err);
+        });
+      }
+
+      document.querySelector("#paste").addEventListener("click", paste);
+    </script>
+  </body>
+</html>
